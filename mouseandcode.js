@@ -7,8 +7,6 @@ const { clickButtonByIndex } = require('./components/clickButtonByIndex.js');
 const copySketchFunction = require('./components/copySketchFunction.js');
 const pasteIntoSketchFunction = require('./components/pasteIntoSketchFunction.js');
 const { performRightClickOptionByTitle } = require('./components/performRightClickOptionByTitle.js');
-// const { pasteIntoSketchFunction } = require('./components/pasteIntoSketchFunction.js');
-
 
 
 (async () => {
@@ -70,14 +68,11 @@ const { performRightClickOptionByTitle } = require('./components/performRightCli
         const title1 = 'Second Sketch'; // Replace with the desired title
         const editOptions1 = await performRightClickOptionByTitle(newPage, selector1, title1);
         console.log(editOptions1);
-
-
+        //TODO: THE CORE RUNS BECAUSE WE MADE IT RUN FOR 40 SECONDS. 
         await new Promise(resolve => setTimeout(resolve, 10000)); // Wait for 10 seconds
         console.log('Waited for 10 seconds.');
         console.log('BEFORE THE CODE RUNS.');
-
         pasteIntoSketchFunction(editOptions1, newPage);
-
         await new Promise(resolve => setTimeout(resolve, 40000)); // Wait for 10 seconds
         console.log('Waited for 40 seconds.'); console.log('AFTER THE CODE RUNS.');
 
