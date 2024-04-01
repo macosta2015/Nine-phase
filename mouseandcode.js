@@ -153,14 +153,8 @@ const { performRightClickOptionByTitle } = require('./components/performRightCli
             console.error(`${desiredOption2} option not found.`);
             await new Promise(resolve => setTimeout(resolve, 5000));
         }
-        console.log('Waiting 10 seconds.');
-        await new Promise(resolve => setTimeout(resolve, 10000)); // Wait for 10 seconds
-
-
-
-
-        console.log('Waiting 10 seconds.');
-        await new Promise(resolve => setTimeout(resolve, 10000)); // Wait for 10 seconds
+        console.log('Waiting 12 seconds.');
+        await new Promise(resolve => setTimeout(resolve, 12000)); // Wait for 10 seconds
 
 
 
