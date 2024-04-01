@@ -5,8 +5,9 @@ const { launchBrowserAndNavigateToDocument } = require('./components/launchBrows
 const { performTest } = require('./components/newSketch.js');
 const { clickButtonByIndex } = require('./components/clickButtonByIndex.js');
 const copySketchFunction = require('./components/copySketchFunction.js');
+const pasteIntoSketchFunction = require('./components/pasteIntoSketchFunction.js');
 const { performRightClickOptionByTitle } = require('./components/performRightClickOptionByTitle.js');
-
+// const { pasteIntoSketchFunction } = require('./components/pasteIntoSketchFunction.js');
 
 
 
@@ -57,9 +58,12 @@ const { performRightClickOptionByTitle } = require('./components/performRightCli
 
         // RIGHT CLICK 
         //ALL THE FOLLOWING CODE NEEDS TO GO TOGETHER
-        console.log('Waiting 10 seconds. AFTER ALL THE MESS');
+        console.log('Waiting 10 seconds.');
+        console.log('SELECTING ITEM 5 ON THE LIST.');
         await new Promise(resolve => setTimeout(resolve, 10000)); // Wait for 10 seconds
         const desiredIndex1 = 6; // Or any other desired index
+        await new Promise(resolve => setTimeout(resolve, 5000)); // Wait for 10 seconds
+        console.log('Waiting 5 seconds.');
         await clickButtonByIndex(newPage, desiredIndex1);
         //Right click option
         const selector1 = 'div[data-id="AJC+8X/uU1MWWXEK"]'; // Replace with the appropriate selector
@@ -68,46 +72,56 @@ const { performRightClickOptionByTitle } = require('./components/performRightCli
         console.log(editOptions1);
 
 
-
-
-        //TYPE WHICH EDIT OPTION YOU WANT TO CHOSE
-        const desiredOption2 = 'Paste into sketch'; //TYPE WHICH EDIT OPTION YOU WANT TO CHOSE
-        console.log('Desired rename option:', desiredOption2);
-        await new Promise(resolve => setTimeout(resolve, 5000));
-
-        console.log('Searching for index of desired option...');
-        await new Promise(resolve => setTimeout(resolve, 5000));
-        let desiredOptionIndex2 = editOptions1.indexOf(desiredOption2);
-        console.log('Index of desired  option:', desiredOptionIndex2);
-        await new Promise(resolve => setTimeout(resolve, 5000));
-
-        if (desiredOptionIndex2 !== -1) {
-            console.log('Desired rename option found.');
-            await new Promise(resolve => setTimeout(resolve, 5000));
-
-            console.log('Evaluating option element... ', desiredOption2);
-            const renameOptionElement = await newPage.evaluateHandle((index) => {
-                const menuItems = document.querySelectorAll('.context-menu-item-span');
-                return menuItems[index];
-            }, desiredOptionIndex2);
-            await new Promise(resolve => setTimeout(resolve, 5000));
-
-            if (renameOptionElement) {
-                console.log('Option element found.', desiredOption2);
-                await new Promise(resolve => setTimeout(resolve, 5000));
-                await renameOptionElement.click();
-                console.log(`Clicked on ${desiredOption2} option element.`);
-                await new Promise(resolve => setTimeout(resolve, 5000));
-            } else {
-                console.error(`${desiredOption2} option element not found.`);
-                await new Promise(resolve => setTimeout(resolve, 5000));
-            }
-        } else {
-            console.error(`${desiredOption2} option not found.`);
-            await new Promise(resolve => setTimeout(resolve, 5000));
-        }
-        console.log('Waiting 10 seconds.');
         await new Promise(resolve => setTimeout(resolve, 10000)); // Wait for 10 seconds
+        console.log('Waited for 10 seconds.');
+        console.log('BEFORE THE CODE RUNS.');
+
+        pasteIntoSketchFunction(editOptions1, newPage);
+
+        await new Promise(resolve => setTimeout(resolve, 40000)); // Wait for 10 seconds
+        console.log('Waited for 40 seconds.'); console.log('AFTER THE CODE RUNS.');
+
+
+
+
+        // //TYPE WHICH EDIT OPTION YOU WANT TO CHOSE
+        // const desiredOption2 = 'Paste into sketch'; //TYPE WHICH EDIT OPTION YOU WANT TO CHOSE
+        // console.log('Desired rename option:', desiredOption2);
+        // await new Promise(resolve => setTimeout(resolve, 5000));
+
+        // console.log('Searching for index of desired option...');
+        // await new Promise(resolve => setTimeout(resolve, 5000));
+        // let desiredOptionIndex2 = editOptions1.indexOf(desiredOption2);
+        // console.log('Index of desired  option:', desiredOptionIndex2);
+        // await new Promise(resolve => setTimeout(resolve, 5000));
+
+        // if (desiredOptionIndex2 !== -1) {
+        //     console.log('Desired rename option found.');
+        //     await new Promise(resolve => setTimeout(resolve, 5000));
+
+        //     console.log('Evaluating option element... ', desiredOption2);
+        //     const renameOptionElement = await newPage.evaluateHandle((index) => {
+        //         const menuItems = document.querySelectorAll('.context-menu-item-span');
+        //         return menuItems[index];
+        //     }, desiredOptionIndex2);
+        //     await new Promise(resolve => setTimeout(resolve, 5000));
+
+        //     if (renameOptionElement) {
+        //         console.log('Option element found.', desiredOption2);
+        //         await new Promise(resolve => setTimeout(resolve, 5000));
+        //         await renameOptionElement.click();
+        //         console.log(`Clicked on ${desiredOption2} option element.`);
+        //         await new Promise(resolve => setTimeout(resolve, 5000));
+        //     } else {
+        //         console.error(`${desiredOption2} option element not found.`);
+        //         await new Promise(resolve => setTimeout(resolve, 5000));
+        //     }
+        // } else {
+        //     console.error(`${desiredOption2} option not found.`);
+        //     await new Promise(resolve => setTimeout(resolve, 5000));
+        // }
+        // console.log('Waiting 10 seconds.');
+        // await new Promise(resolve => setTimeout(resolve, 10000)); // Wait for 10 seconds
 
 
 
