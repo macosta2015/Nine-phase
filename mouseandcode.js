@@ -1,3 +1,6 @@
+//April 2 of 2024
+//Mario Acosta Automation process 
+
 const puppeteer = require('puppeteer');
 require('dotenv').config();
 
